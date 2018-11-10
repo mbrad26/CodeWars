@@ -54,7 +54,8 @@ def add_binary(a,b):
 
 """Given: an array containing hashes of names
 
-Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+Return: a string formatted as a list of names separated by commas except for the last two names, which should be 
+separated by an ampersand.
 
 Example:
 
@@ -81,3 +82,18 @@ def namelist(names):
     return ', '.join(first)
 
 
+"""Write Number in Expanded Form
+You will be given a number and you will need to return it as a string in Expanded Form. For example:
+
+expanded_form(12) # Should return '10 + 2'
+expanded_form(42) # Should return '40 + 2'
+expanded_form(70304) # Should return '70000 + 300 + 4'
+NOTE: All numbers will be whole numbers greater than 0."""
+
+
+def expanded_form(num):
+    a = [str(int(k) * pow(10, i))for i, k in enumerate(list(str(num))[::-1])][::-1]
+    return ' + '.join([number for number in a if number != '0'])
+
+
+print(expanded_form(70304))

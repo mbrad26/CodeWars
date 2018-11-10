@@ -40,7 +40,8 @@ def xo(s):
         return False
 
 
-"""Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+"""Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done 
+before, or after the addition.
 
 The binary number returned should be a string.
 
@@ -49,3 +50,34 @@ The binary number returned should be a string.
 
 def add_binary(a,b):
     return bin(a + b)[2:]
+
+
+"""Given: an array containing hashes of names
+
+Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+Example:
+
+namelist([ {'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'} ])
+# returns 'Bart, Lisa & Maggie'
+
+namelist([ {'name': 'Bart'}, {'name': 'Lisa'} ])
+# returns 'Bart & Lisa'
+
+namelist([ {'name': 'Bart'} ])
+# returns 'Bart'
+
+namelist([])
+# returns ''
+"""
+
+
+def namelist(names):
+    a = [name.get('name') for name in names]
+    last = a[-2:]
+    first = a[:-2]
+    last = ' & '.join(last)
+    first.append(last)
+    return ', '.join(first)
+
+

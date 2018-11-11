@@ -115,3 +115,123 @@ def array_diff(a, b):
 
 
 array_diff([1,2,2], [])
+
+
+"""Is Prime
+Define a function isPrime/is_prime() that takes one integer argument and returns true/True or false/False depending on
+if the integer is a prime.
+
+Per Wikipedia, a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 
+1 and itself.
+
+Example
+bool isPrime(5) = return true
+mov edi, 1
+call is_prime    ; EAX <- 0 (false)
+
+mov edi, 2
+call is_prime    ; EAX <- 1 (true)
+
+mov edi, -1
+call is_prime    ; EAX <- 0 (false)
+Assumptions
+You can assume you will be given an integer input.
+You can not assume that the integer will be only positive. You may be given negative numbers as well (or 0).
+"""
+
+
+def is_prime(num):
+    if num < 1:
+        return False
+    elif num > 1:
+        for i in range(2, num):
+            if (num % i) == 0:
+                return False
+                break
+        else:
+            return True
+
+
+print(is_prime(165548546549844515158564498879454148979456155485517)
+
+
+"""Given two arrays a and b write a function comp(a, b) (compSame(a, b) in Clojure) that checks whether the two arrays have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+
+Examples
+Valid arrays
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
+
+a = [121, 144, 19, 161, 19, 144, 19, 11] 
+b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+Invalid arrays
+If we change the first number to something else, comp may not return true anymore:
+
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a,b) returns false because in b 132 is not the square of any number of a.
+
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+comp(a,b) returns false because in b 36100 is not the square of any number of a.
+
+Remarks
+a or b might be [] (all languages except R, Shell). a or b might be nil or null or None or nothing (except in Haskell, Elixir, C++, Rust, R, Shell).
+
+If a or b are nil (or null or None), the problem doesn't make sense so return false.
+
+If a or b are empty the result is evident by itself.
+
+"""
+
+
+def comp(array1, array2):
+    if array1 is None or array2 is None:
+        return False
+    a1 = [pow(x, 2) for x in array1]
+    return sorted(array2) == sorted(a1)
+
+
+a = [121, 144, 19, 161, 19, 144, 19, 11, 7]
+b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a, b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

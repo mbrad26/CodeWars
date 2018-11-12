@@ -198,6 +198,25 @@ b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
 comp(a, b)
 
 
+"""Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number
+ of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+Examples:
+
+solution('abc') # should return ['ab', 'c_']
+solution('abcdef') # should return ['ab', 'cd', 'ef']"""
+
+
+def solution(s):
+    s_list = list(s)
+    if len(s_list) % 2 != 0:
+        s_list.append('_')
+    new_s = []
+    k = 0
+    for i in range(int(len(s_list) / 2)):
+        new_s.append(''.join(s_list[i*2: (k + i) + 2]))
+        k += 1
+    return new_s
 
 
 

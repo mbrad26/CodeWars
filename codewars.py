@@ -152,16 +152,19 @@ def is_prime(num):
             return True
 
 
-print(is_prime(165548546549844515158564498879454148979456155485517)
+print(is_prime(165548546549844515158564498879454148979456155485517))
 
 
-"""Given two arrays a and b write a function comp(a, b) (compSame(a, b) in Clojure) that checks whether the two arrays have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+"""Given two arrays a and b write a function comp(a, b) (compSame(a, b) in Clojure) that checks whether the two arrays
+ have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in b are the elements in
+  a squared, regardless of the order.
 
 Examples
 Valid arrays
 a = [121, 144, 19, 161, 19, 144, 19, 11]  
 b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
-comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
+comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 
+the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
 
 a = [121, 144, 19, 161, 19, 144, 19, 11] 
 b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
@@ -177,13 +180,12 @@ b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
 comp(a,b) returns false because in b 36100 is not the square of any number of a.
 
 Remarks
-a or b might be [] (all languages except R, Shell). a or b might be nil or null or None or nothing (except in Haskell, Elixir, C++, Rust, R, Shell).
+a or b might be [] (all languages except R, Shell). a or b might be nil or null or None or nothing (except in Haskell,
+ Elixir, C++, Rust, R, Shell).
 
 If a or b are nil (or null or None), the problem doesn't make sense so return false.
 
-If a or b are empty the result is evident by itself.
-
-"""
+If a or b are empty the result is evident by itself."""
 
 
 def comp(array1, array2):
@@ -212,12 +214,13 @@ def solution(s):
     if len(s_list) % 2 != 0:
         s_list.append('_')
     new_s = []
-    k = 0
     for i in range(int(len(s_list) / 2)):
-        new_s.append(''.join(s_list[i*2: (k + i) + 2]))
-        k += 1
+        new_s.append(''.join(s_list[i: i + 2]))
     return new_s
 
+
+print(solution('abc')) # should return ['ab', 'c_']
+print(solution('abcdefgj')) # should return ['ab', 'cd', 'ef']
 
 
 

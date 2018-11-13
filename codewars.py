@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 """Your task is to sort a given string. Each word in the string will contain a single number.
 This number is the position the word should have in the result.
 
@@ -330,12 +333,80 @@ def in_array(array1, array2):
     return [substr for substr in sorted(set(array1)) if substr in ''.join(array2)]
 
 
+"""Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to 
+match str2, otherwise returns false.
+
+Notes:
+
+Only lower case letters will be used (a-z). No punctuation or digits will be included.
+Performance needs to be considered"""
+
+# 513 out of 520
+
+# def scramble(s1, s2):
+#     r = []
+#     for char in s2:
+#         if char in s1:
+#             r.append(char)
+#     return len(r) == len(s2)
 
 
+# Time: 11739ms Passed: 514 Failed: 6 Exit Code: 1
+
+# def scramble(s1, s2):
+#     return all(map(lambda char: True if char in s1 else False, s2))
 
 
+# Time: 10643ms Passed: 514 Failed: 6 Exit Code: 1
+
+# def scramble(s1, s2):
+#     return all([char if char in s1 else False for char in s2])
 
 
+def scramble(s1, s2):
+    letters = Counter(s1)
+    word = Counter(s2)
+    diff = word - letters
+    return len(diff) == 0
+
+
+"""A child is playing with a ball on the nth floor of a tall building. The height of this floor, h, is known.
+
+He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
+
+His mother looks out of a window 1.5 meters from the ground.
+
+How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing?
+
+Three conditions must be met for a valid experiment:
+Float parameter "h" in meters must be greater than 0
+Float parameter "bounce" must be greater than 0 and less than 1
+Float parameter "window" must be less than h.
+If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
+
+Note: The ball can only be seen if the height of the rebounding ball is stricty greater than the window parameter.
+
+Example:
+
+h = 3, bounce = 0.66, window = 1.5, result is 3
+
+h = 3, bounce = 1, window = 1.5, result is -1 (Condition 2) not fulfilled)."""
+
+
+def bouncing_ball(h, b, w):
+    r = 0
+    if h > 0 and 0 < b < 1 and w < h:
+        while h > w:
+            r += 1
+            h *= b
+        return 2 * r - 1
+    else:
+        return -1
+
+
+print(bouncing_ball(3, 0.66, 1.5))
+
+print(bouncing_ball(30, 0.66, 1.5))
 
 
 
